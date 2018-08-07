@@ -28,7 +28,14 @@ function returnCustomObject(arr){
   
   // ---------- Your Code Here ----------
 
-
+  for(var i = 0; i < toyArray.length; i++){
+    if(obj[toyArray[i]]){
+      obj[toyArray[i]]++;
+    }
+    else{
+      obj[toyArray[i]] = 1;
+    }
+  }
 
 
 
@@ -68,8 +75,13 @@ function greatestFrequency(toyInventory){
   var maxToy, maxNum;
   
   // ---------- Your Code Here ----------
-
-
+  maxNum = 0;
+  for(var toy in toyInventory){
+    if(toyInventory[toy] > maxNum){
+      maxToy = toy;
+      maxNum = toyInventory[toy];
+    }
+  }
 
 
 
@@ -101,7 +113,11 @@ function toyArrToObj(arrayOfToys){
 
   // ---------- Your Code Here ----------
 
-
+  for(var i = 0; i < toyArray.length; i++){
+    var newToy = {};
+    newToy.name = toyArray[i];
+    toyArrayOfObjs.push(newToy);
+  }
 
 
 
@@ -218,7 +234,18 @@ function createCustomObject(objectArr){
 
   // ---------- Your Code Here ----------
 
-
+  for(var i = 0; i < toyInventoryArrayOfObjects.length; i++){
+    if(!customToyLineObj[toyInventoryArrayOfObjects[i].toyLine]){
+      customToyLineObj[toyInventoryArrayOfObjects[i].toyLine] = {};
+      customToyLineObj[toyInventoryArrayOfObjects[i].toyLine].toyLine = toyInventoryArrayOfObjects[i].toyLine;
+      customToyLineObj[toyInventoryArrayOfObjects[i].toyLine].toyLineToys = [toyInventoryArrayOfObjects[i].title];
+      customToyLineObj[toyInventoryArrayOfObjects[i].toyLine].totalToysInToyLine = toyInventoryArrayOfObjects[i].stock;
+    }
+    else{
+      customToyLineObj[toyInventoryArrayOfObjects[i].toyLine].toyLineToys.push(toyInventoryArrayOfObjects[i].title);
+      customToyLineObj[toyInventoryArrayOfObjects[i].toyLine].totalToysInToyLine += toyInventoryArrayOfObjects[i].stock;
+    }
+  }
 
 
 
@@ -264,7 +291,14 @@ function areDups(arr){
   // ---------- Your Code Here ----------
 
 
-
+  for(var i = 0; i < arr.length; i++){
+    for(var j = i+1; j < arr.length; j++){
+      if(arr[i] === arr[j]){
+        return true;
+      }
+    }
+  }
+  return false;
 
 
 

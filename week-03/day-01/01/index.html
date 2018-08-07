@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+<body>
+<h1>Activity 1</h1>
+<div class="content pl-5">
+    <div class="row">
+        <div class="col-md-6">
+            <form>
+                <div class="form-row">
+                    <label for="firstName">First Name</label>
+                    <input type="text" class="form-control" id="firstName" placeholder="First name">
+                </div>
+                <div class="form-row">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" placeholder="Last name">
+                </div>
+                <div class="form-row">
+                    <label for="ocupation">Occupation</label>
+                    <input type="text" class="form-control" id="occupation" placeholder="Occupation">
+                </div>
+                <div class="form-row">
+                    <label>City</label>
+                    <input type="text" class="form-control" id="city" placeholder="City">
+                </div>
+                <div class="form-row pb-2">
+                    <label>State</label>
+                    <input type="text" class="form-control" id="state" placeholder="State">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-6" id="output">
+            <h2 id="fullName"></h2>
+            <h2 id="occupationOutput"></h2>
+            <h2 id="location"></h2>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="logic.js"></script>
+    
+</body>
+</html>

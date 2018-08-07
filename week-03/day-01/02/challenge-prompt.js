@@ -8,8 +8,11 @@
 function createButton(str) {
   // ---------- Your Code Here ----------
 
-
-
+  var button = $("<button>");
+  button.addClass("button");
+  button.attr("data", str);
+  button.text(str);
+  $("#button-area").append(button);
 
 
 
@@ -27,9 +30,10 @@ function createButton(str) {
 function displayContent(event) {
   // ---------- Your Code Here ----------
 
+  var text = event.target.attributes.data.value;
+  console.log(text);
 
-
-
+  $("#display-area").append(text);
 
 
   // ---------- End of Code area ----------
@@ -41,9 +45,17 @@ function displayContent(event) {
 // Put your click listeners here.
 $(function () {
   // ---------- Your Code Here ----------
+  $("#submit-button").on("click", function(e){
+    //Prevent default submit button behavior
+    e.preventDefault();
+    var input = $("#user-input").val();
+    $("#user-input").val("");
+    createButton(input);
+  })
 
-
-
+  $("#button-area").on("click", "button", function(e){
+    displayContent(e);
+  })
 
 
 
