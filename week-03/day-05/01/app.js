@@ -24,10 +24,10 @@ $(document).ready(function() {
 				Create a function call `getHeroes`. Put the closing bracket just before this function is invoked (towards the bottom of this file). 
 				
 			*/
+	function getHeroes(){
 
       /* 
       2. Create 3 variable for our query:
-      
 
        a. create a varialbe named `cors` that has the value `https://cors-anywhere.herokuapp.com/`
         
@@ -43,6 +43,9 @@ $(document).ready(function() {
 					`q` for query 
 					followed by the parameter value
 			*/
+		var cors = "https://cors-anywhere.herokuapp.com/";
+		var baseURL = "https://funwithajax.herokuapp.com/api";
+		var query = "?q=heroes";
 
       /* 
       3.
@@ -50,13 +53,17 @@ $(document).ready(function() {
           `cors` plus `baseURL` plus `query`
           Close your promise (.then()) just before you close the function. We will be writing the rest of our code within the promise, ensuring that all this logic happens only once we've received a return from the API.
 			*/
-
+		$.ajax({
+			url: cors + baseURL + query,
+			method: "GET"
+			}).then(function (response) {
       /* 
       4.
 				`console.log` the response
 					** make sure to add a string note inside ALL your console.log like: 
 						console.log("these are the results:", result); 
 			*/
+				console.log(response);
 
 			/* 
 				examine the response, look at the data structure 
@@ -67,19 +74,23 @@ $(document).ready(function() {
 			/* 
 				add class `hero-BKG` to `<body>` 
 			*/
+			$("body").addClass("hero-BKG");
 
 			/* 
 				add class `blue` to the `#wrap` 
 			*/
+			$("#wrap").addClass("blue");
 
 			/*
 				remove class `weather-wrap` and `music` from `#content`
 			*/
+			$("#content").removeClass("weather-wrap music");
 
 			/*
         add class `heroes` to `#content`
         Open up inspector tools and make sure your HTML looks like you expect it to.
 			*/
+			$("#content").addClass("heroes");
 
       /* 
       6. 
@@ -87,6 +98,7 @@ $(document).ready(function() {
           remember `.empty()`
           
 			*/
+			$("#content").empty();
 
 			/* 
 			*****	Using jQuery *****
@@ -97,17 +109,22 @@ $(document).ready(function() {
 				create a `div` and store it to a variable called `row`
 				add a class of `row` to the `row div` 
 			*/
+			var row = $("<div>");
+			row.addClass("row");
 
       /* 
       7.
         for each squad in the response: 
         Hint: loop
 			*/
+			for(var i = 0; i < response.length; i++){
 
 				/* 
 					create a `div` and store it to a variable called `col`
 					add classes `col-sm-12 col-md-6 col-lg-6` to the `col div` 
 				*/
+				var col = $("<div>");
+				col.addClass("col-sm-12 col-md-6 col-lg-6");
 
 				/* 
 					create a `div` and store it to a variable called `header`
@@ -116,48 +133,64 @@ $(document).ready(function() {
 						* hint this can be achieved using .html
 					append `header` to `col` 
 				*/
+				var header = $("<div>");
+				header.addClass("header");
+				header.html("<h2>").text(response[i].squadName);
+				col.append(header);
 
 			 /* 
 			 	create a `div` and store it to a variable called `characters`
 			  add a class of `characters` to the `characters div` 
 			 */
+				var characters = $("<div>");
 
         /* 
         8.
           for each member in the current squad: 
           Hint: nested loop
 			  */
+			 for(var j = 0; j < response[i].members.length; j++){
 
 			  	/* 
 			  		create a `div` and store it to a variable called `hero`
 			  		add a class of `hero` to the `hero div` 
-			  	*/
+				  */
+				var hero = $("<div>");
 
 			  	/* 
 			  		creat a `div` and store it to a variable called `imgWrap`
 			  		add a class of `img-wrap` to the `imgWrap div` 
-			  	*/
+				  */
+				var imgWrap = $("<div>");
 
 			  	/* 
 				  	create a `img` and store it to a variable called `image`
 				  	add a class of `hero-image` to the `image div`
 				  	add an attribute for `source` and the value being the current members image 
-			  	*/
+				  */
+				var image = $("<img>");
+				image.addClass("hero-image");
+				image.attr("src", response[i].members[j].image);
 
 			  	/* 
 			  		append `image` to `imgWrap` 
-			  	*/
+				  */
+				imgWrap.append(image);
 
 			  	/* 
 				  	create a `p` and store it to a variable called `name`
 				  	add text of the current member's name to the `name div`
-			  	*/
+				  */
+				var name = $("<p>");
+				name.text(response[i].members[j].name);
 
 			  	/* 
 				  	create a `p` and store it to a variable called `power`
 				  	add text that is the current members LAST listed power to the `power div`
 				  		example : sleepig, eating, saving the world – saving the world would be the LAST listed power 
 				  */
+				var power = $("<p>");
+				power.text(response[i].members[j].powers[response[i].members[j].powers.length - 1]);
 
           /* 
           9.
@@ -165,6 +198,11 @@ $(document).ready(function() {
 				  	append the `imgWrap`, `name`, and `power` to `hero`
 				  	append `hero` to `characters` 
 				  */
+				hero.append(imgWrap);
+				hero.append(name);
+				hero.append(power);
+				characters.append(hero);
+			 }
 
         /* 
         10.
@@ -172,12 +210,18 @@ $(document).ready(function() {
 				  append `characters` to `col`
 				  append `col` to `row`
 				*/
+			col.append(characters);
+			row.append(col);
+			}
 
         /* 
         11.
 			  	outside the loops 
 			  	append `row` to `#content` 
 			  */
+			$("#content").append(row);
+			})
+	}
 getHeroes()
         /* 
         12.

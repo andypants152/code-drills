@@ -9,11 +9,12 @@ $(document).ready(function() {
       The function is already invoked at the end of this file
       close this function just before it is invoked
 		*/
+	function getWeather(){
 
     /* 
     2. Create your query:
 
-      a.	create a varialbe named `cors` that has the value `https://cors-anywhere.herokuapp.com/`
+	  a.	create a varialbe named `cors` that has the value `https://cors-anywhere.herokuapp.com/`
 
       b.	create a variable named `baseURL` with the value `https://funwithajax.herokuapp.com/api`
 
@@ -31,6 +32,9 @@ $(document).ready(function() {
             `c` for query
             followed by the parameter
         */
+		var cors = "https://cors-anywhere.herokuapp.com/";
+		var baseURL = "https://funwithajax.herokuapp.com/api";
+		var query = "?q=weather&c=San%Francisco";
 
       /* 
     3.
@@ -38,12 +42,16 @@ $(document).ready(function() {
 					`cors` plus `baseURL` plus `query`
 					Close your promise (.then()) just before you close the function. We will be writing the rest of our code within the promise, ensuring that all this logic happens only once we've received a return from the API.
 			*/
-
+		$.ajax({
+			url: cors + baseURL + query,
+			method: "GET"
+			}).then(function (response) {
 		/* 
 			`console.log` the response
 				** make sure to add a string note inside ALL your console.log like: 
 				console.log("these are the results:", results); 
 		*/
+				console.log(response);
 
 		/* 
 			examine the response, look at the data structure 
@@ -54,19 +62,23 @@ $(document).ready(function() {
     4.
 			add class `weather-BKG` to `body` 
 		*/
+				$("body").addClass("weather-BKG");
 
 		/*
 				remove class `heroes` and `music` from `#content`
 		*/
+				$("#content").removeClass("heroes music");
 
 		/*
 			add class `weather-wrap` to `#content`
 		*/
+				$("#content").addClass("weather-wrap");
 
 		/* 
 		Before doing anything with the data make sure that you remove any elements inside the `#content` container 
 			remember `.empty()`
 		*/
+				$("#content").empty();
 
 		/* 
 			Using jQuery 
@@ -77,26 +89,34 @@ $(document).ready(function() {
 			create a `div` and store it to a variable called `weather`
 			add a class of `weather` to the `weather div` 
 		*/
+				var weather = $("<div>");
 
 		/* 
 			create a `h2` and store it to a variable called `title`
 			add text of the city name to `title div` 
 		*/
-
+				var title = $("<h2>");
+				title.text(response.name);
 		/* 
 			create a `div` and store it to a variable called `row1`
 			add classes `row` and `row1` to the `row1 div` 
 		*/
+				var row1 = $("<div>");
+				row1.addClass("row row1");
 
 		/* 
 			create a `div` and store it to a variable called `col1`
 			add classes `col-xs-6 col-sm-6 col-md-12 col-lg-6` to the `col1 div` 
 		*/
+				var col1 = $("<div>");
+				col1.addClass("col-xs-6 col-sm-6 col-md-12 col-lg-6");
 
 		/* 
 			create a `image` and store it to a variable called `image`
 			add a class of `weather-img` to the `image div` 
 		*/
+				var image = $("<img>");
+				image.addClass("weather-img");
 
     /* 
     6.
@@ -104,31 +124,39 @@ $(document).ready(function() {
 			set `icon` value to the weater response icon
 				this will be a set of character like: `04d`
 		*/
+				var icon = response.weather[0].icon;
 
 		/*
 			add an attribute for `source` to `image` and the value to `http://openweathermap.org/img/w/` + `icon` + ".png"
 		*/
-
+				image.attr("src", "http://openweathermap.org/img/w/" + icon + ".png");
     /* 
     
     7.
 			create a `div` and store it to a variable called `descrip`
 			add text of the weather response description to `descrip div` 
 		*/
+				var descrip = $("<div>");
+				descrip.text(response.weather.description);
 
 		/*
 			append `image` and `descript` to `col1`
 		*/
+				col1.append(image);
+				col1.append(descrip);
 
 
 		/* 
 			create a `div` and store it to a variable called `col2`
 			add classes `col-xs-6 col-sm-6 col-md-12 col-lg-6` to the `col2 div` 
 		*/
+				var col2 = $("<div>");
+				col2.addClass("col-xs-6 col-sm-6 col-md-12 col-lg-6");
 
 		/* 
 			create a `h3` and store it to a variable called `temp`
 		*/
+				var temp = $("<h3>");
 
 		/*
 			create a variable called `tempTxt`
@@ -136,31 +164,47 @@ $(document).ready(function() {
 				drop the decimal and values after
 				example 56.8 should be 56 
 		*/
+				var tempTxt = Math.floor(response.main.temp);
 
 		/*
 			add `HTML` to `temp` with the value `tempTxt` + the HTML symbol for fahrenheit 
 		*/
+				temp.html(tempTxt + "&#8457");
 
 		/*
 			add class of `hot` to `temp` if `tempTxt` >= 75
 			add class of `nice` to `temp` if `tempTxt` < 75 and tempTxt >= 55
 			add class of `cold` to `temp` if `tempTxt` < 55
 		*/
+				if(tempTxt >= 75){
+					temp.addClass("hot");
+				}
+				else if(tempTxt >= 55){
+					temp.addClass("nice");
+				}
+				else if(tempTxt < 55){
+					temp.addClass("cold");
+				}
 
     /*
     
 			append `temp` to `col2`
 		*/
+				col2.append(temp);
 
 		/* 
 			create a `div` and store it to a variable called `row2`
 			add classes `row` and `row2` to the `row2 div` 
 		*/
+				var row2 = $("<div>");
+				row2.addClass("row row2");
 
 		/* 
 			create a `div` and store it to a variable called `col3`
 			add classes `col-xs-6 col-sm-12 col-md-12 col-lg-6` to the `col3 div` 
 		*/ 
+				var col3 = $("<div>");
+				col3.addClass("col-xs-6 col-sm-12 col-md-12 col-lg-6");
 
 		/*
 			create a variable called `highTemp`
@@ -168,20 +212,26 @@ $(document).ready(function() {
 				drop the decimal and values after
 				example 56.8 should be 56 
 		*/
+				var highTemp = Math.floor(response.main.temp_max);
 
 		/* 
 			create a `p` and store it to a variable called `high`
 			add `HTML` to `high` with the value `highTemp` + the HTML symbol for fahrenheit
 		*/
+				var high = $("<p>");
+				high.html(highTemp + "&#8457");
 
 		/* 
 			append `high` to `col3`
 		*/
+				col3.append(high);
 
 		/* 
 			create a `div` and store it to a variable called `col4`
 			add classes `col-xs-6 col-sm-12 col-md-12 col-lg-6` to the `col4 div` 
 		*/ 
+				var col4 = $("<div>");
+				col4.addClass("col-xs-6 col-sm-12 col-md-12 col-lg-6");
 
 		/*
 			create a variable called `lowTemp`
@@ -189,34 +239,47 @@ $(document).ready(function() {
 				drop the decimal and values after
 				example 56.8 should be 56 
 		*/
+				var lowTemp = Math.floor(response.main.temp_min);
 
 			/* 
 			create a `p` and store it to a variable called `low`
 			add `HTML` to `low` with the value `lowTemp` + the HTML symbol for fahrenheit
 		*/
+				var low = $("<p>");
+				low.html(lowTemp + "&#8457");
 
 		/* 
 			append `low` to `col4`
 		*/
+				col4.append(low);
 
 		/* 
 			append `col1` and `col2` to `row1`
 		*/
+				row1.append(col1);
+				row1.append(col2);
 
 		/* 
 			append `col3` and `col4` to `row2`
 		*/
+				row2.append(col3);
+				row2.append(col4);
+				
 
 		/*
 			append `title`, `row1` and `row2` to `weather`
-		*/
+		*/	
+				weather.append(title);
+				weather.append(row1);
+				weather.append(row2);
 
 		/*
 			append `weather` to `#content`
 		*/
-  
+				$("#content").append(weather);
     //8.
 		/* BONUS Split these actions into multiple functions */
-
+			})
+	}
     getWeather()
 })
