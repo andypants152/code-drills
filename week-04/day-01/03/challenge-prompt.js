@@ -7,7 +7,19 @@ function hamming(str1, str2) {
 
   // -------------------- Your Code Here --------------------
 
+  var hammingCount = 0;
 
+  if(str1.length === str2.length){
+    for(var i = 0; i < str1.length; i++){
+      if(str1.charAt(i) != str2.charAt(i)){
+        hammingCount++;
+      }
+    }
+    return hammingCount;
+  }
+  else{
+    return "Please pass two strings of equal length to this function"
+  }
   
   
 

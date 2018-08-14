@@ -10,8 +10,48 @@
 //
 // -------------------- Your Code Here --------------------
 
+function evens(arr){
+  var evens = [];
+  for(var i = 0; i < arr.length; i++){
+    if(arr[i] % 2 === 0){
+      evens.push(arr[i]);
+    }
+  }
+  return evens;
+}
 
+function odds(arr){
+  var odds = [];
+  for(var i = 0; i < arr.length; i++){
+    if(arr[i] % 2 != 0){
+      odds.push(arr[i]);
+    }
+  }
+  return odds;
+}
 
+function bubbleSort(array){
+  var didSwap = true; //starts as true to for initial swap
+
+  function sorting(array){
+      for(var i = 0; i < array.length; i++){
+          for(var j = (i+1); j < array.length; j++){
+              if(array[i] > array[j]){
+                  var temp = array[j];
+                  array[j] = array[i]
+                  array[i] = temp;
+                  didSwap = true;
+              }
+          }
+      }
+  }
+  if(didSwap){
+      didSwap = false;
+      sorting(array);
+  }
+  return array;
+
+}
 
 
 // --------------------- End Code Area --------------------
@@ -22,10 +62,15 @@
 // -------------------------------------------------------
 function upDownSort(arr) {
   // -------------------- Your Code Here --------------------
+  evenNumberArray = evens(arr);
+  oddNumberArray = odds(arr);
+  upDownArray = bubbleSort(evenNumberArray);
+  oddNumberArray = bubbleSort(oddNumberArray);
+  for(var i = oddNumberArray.length - 1; i >= 0 ; i--){
+    upDownArray.push(oddNumberArray[i]);
+  }
 
-
-
-
+  return upDownArray;
 
   // --------------------- End Code Area --------------------
 }

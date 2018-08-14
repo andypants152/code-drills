@@ -11,7 +11,7 @@ function cubeNum(num) {
 
   // -------------------- Your Code Here --------------------
 
-
+  return Math.pow(num, 3);
   
 
 
@@ -36,7 +36,7 @@ function twoAverage(num1, num2) {
   // -------------------- Your Code Here --------------------
 
 
-  
+  return (num1 + num2) / 2;
 
 
   // --------------------- End Code Area --------------------
@@ -62,7 +62,7 @@ function prepend(arr, elem) {
   // -------------------- Your Code Here --------------------
   
 
-  
+  return arr.unshift(elem);
 
 
   // --------------------- End Code Area --------------------
@@ -97,7 +97,7 @@ function addToObject(obj, key, arr) {
   // -------------------- Your Code Here --------------------
 
 
-  
+  obj[key] = arr;
 
 
   // --------------------- End Code Area --------------------
@@ -127,9 +127,23 @@ console.log("==================== Question 05 ====================");
 function strToArray(str) {
 
   // -------------------- Your Code Here --------------------
+  var word = "";
+  var array = [];
+  for(var i = 0; i < str.length; i++){
+    if(str[i] != " "){
+      word += str[i];
+    }
+    else if(word != ""){
+      array.push(word);
+      word = "";
+    }
 
+  }
+  if(word != ""){
+    array.push(word);
+  }
 
-
+  return array;
 
 
   // --------------------- End Code Area --------------------
@@ -152,7 +166,7 @@ function getFullName(firstName, lastName) {
 
   // -------------------- Your Code Here --------------------
 
-
+  return firstName + " " + lastName;
   
 
 
@@ -175,7 +189,7 @@ function getFirstElem(arr) {
   // -------------------- Your Code Here --------------------
 
 
-
+  return arr[0];
 
 
   // --------------------- End Code Area --------------------

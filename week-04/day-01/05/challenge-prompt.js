@@ -10,9 +10,42 @@
 //
 // -------------------- Your Code Here --------------------
 
+function isPrime(num){
+  //for loop starting one below the number
+  for(var i = (num -1); i >= 1; i--){
+      //if i = 1, the number is prime
+      if(i === 1){
+          return true;
+      }
+      //if the number modulo i is 0 the number is not a prime
+      if(num % i === 0){
+          return false;
+      }
+  }
+}
 
+function bubbleSort(array){
+  var didSwap = true; //starts as true to for initial swap
 
+  function sorting(array){
+      for(var i = 0; i < array.length; i++){
+          for(var j = (i+1); j < array.length; j++){
+              if(array[i] < array[j]){
+                  var temp = array[j];
+                  array[j] = array[i]
+                  array[i] = temp;
+                  didSwap = true;
+              }
+          }
+      }
+  }
+  if(didSwap){
+      didSwap = false;
+      sorting(array);
+  }
+  return array;
 
+}
 
 // --------------------- End Code Area --------------------
 
@@ -22,10 +55,13 @@
 // -------------------------------------------------------
 function primeSort(arr) {
   // -------------------- Your Code Here --------------------
-
-
-
-
+  var primes = [];
+  for(var i = 0; i < arr.length; i++){
+    if(isPrime(arr[i])){
+      primes.push(arr[i]);
+    }
+  }
+  return bubbleSort(primes);
 
   // --------------------- End Code Area --------------------
 }
