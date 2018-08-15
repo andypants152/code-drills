@@ -12,10 +12,21 @@
   <script>
     function compressor(str) {
     // ====================== YOUR WORK HERE ===================
+      var compressed = "";
 
+      for(var i = 0; i < str.length; i++){
+        if(compressed.indexOf(str.charAt(i)) === -1){
+          var count = 1;
+          for(var j = i+1; j < str.length; j++){
+            if(str.charAt(i) === str.charAt(j)){
+              count++;
+            }
+          }
+          compressed += str.charAt(i) + count;
+        }
+      }
 
-
-
+      return compressed;
 
     // =========================================================
     }

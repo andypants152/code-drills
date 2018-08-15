@@ -15,9 +15,10 @@
     function largestSum(arr) {
     // ====================== YOUR WORK HERE ===================
 
-
-
-
+      var largestNum = Math.max(...arr);
+      arr.splice(arr.indexOf(largestNum), 1);
+      var secondLargest = Math.max(...arr);
+      return largestNum + secondLargest;
 
     // =========================================================
   }
