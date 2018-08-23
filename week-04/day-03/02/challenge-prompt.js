@@ -6,9 +6,9 @@ Given an array and an element of any type, create a function that returns an arr
 
 function addToEndOfArr(arr, element) {
   // your code here
-
-  
-
+  var newArray = arr.slice(0);
+  newArray.push(element);
+  return newArray;
 
 }
 
@@ -30,7 +30,7 @@ Notes:Assume that sales tax is 9.5% and tip is 15%.
 function totalBill(preTaxAndTipAmount) {
   // your code here
 
-  
+  return preTaxAndTipAmount += (preTaxAndTipAmount * .095) + (preTaxAndTipAmount * .15);
 
 
 
@@ -49,6 +49,7 @@ Reference:https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Glob
 
 function areaOfACircle(radius) {
   // your code here
+  return Math.PI * radius * radius;
 
 }
 var outputThree = areaOfACircle(4);
@@ -65,21 +66,25 @@ function findLongestWord(word1, word2, word3) {
   // your code here
   // Step 1 // concat all three strings into one large string with space inbetween
 
-  
+  var why = word1 + " " + word2 + " " + word3;
 
 
   // Step 2 create an array of these three words by spliting them at the space
 
-  
+  var arr = why.split(" ");
 
   // Step 2.5 // create a variable called largest equal to the first index of the array
 
-  
+  var largest = arr[0];
 
   // Step 3 // loop through to compare and find smallest length and then return the largest length
 
- 
-  
+  for(var i = 1; i < arr.length; i++){
+    if(arr[i].length > largest.length){
+      largest = arr[i];
+    }
+  }
+  return largest.length;
   
 }
 
