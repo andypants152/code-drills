@@ -15,3 +15,8 @@ What's worse, if he leaves the chicken and fox alone together, the fox will eat 
 Using only the farmer's rickety boat and its rules, help him get across the river with all of his companions.
 
 There is no "trick" answer to this problem
+
+
+The farmer takes the chicken on the first trip, then returns and gets the grain
+he takes the grain and brings back the chicken, then leaves the chicken and takes the fox
+he then returns and brings the chicken across

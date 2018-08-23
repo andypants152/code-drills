@@ -11,9 +11,29 @@
 
   <script>
     
-    var elevator = "^^^^^vv^v^vv^v^^^vvv^^^^^^v^^v^^^v^^vvv"
+    var elevator = "^^^^^vv^v^vv^v^^^vvv^^^^^^v^^v^^^v^^vvv";
     
     function whichFloor(str) {
+      var floor = 0;
+
+      for(var i = 0; i < str.length; i++){
+        if(str[i] === "^"){
+          floor += 1;
+        }
+        else if(str[i] === "v"){
+          floor -= 1;
+        }
+        else{
+          return "only 'v' and '^' are valid inputs";
+        }
+      }
+
+      if(floor >= 0){
+        return floor;
+      }
+      else{
+        return "the elevator crashed!"
+      }
 
     }
 
