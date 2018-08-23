@@ -16,7 +16,33 @@
     function backToSquareOne(moves) {
 // ===================== YOUR WORK HERE =====================
 
+      var location = [0, 0];
 
+      for(var i = 0; i < moves.length; i++){
+        switch(moves[i]){
+          case 'U':
+          location[0]++;
+          break;
+          case 'D':
+          location[0]--;
+          break;
+          case "L":
+          location[1]--;
+          break;
+          case 'R':
+          location[1]++;
+          break;
+          default:
+          return "Invalid Move(s)!"
+        }
+      }
+
+      if(location[0] === 0 && location[1] === 0){
+        return true;
+      }
+      else{
+        return false;
+      }
 
 
 // ==========================================================

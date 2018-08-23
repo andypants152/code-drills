@@ -17,8 +17,22 @@
   function uncommon(s1, s2) {
 // ===================== YOUR WORK HERE =====================
 
+var words = s1.split(" ");
+words.push(...s2.split(" "));
 
+var uniques = [];
 
+for(var i = 0; i < words.length; i++){
+  var index = words.indexOf(words[i], i + 1);
+  if(index === -1){
+    uniques.push(words[i]);
+  }
+  else{
+    words.splice(index, 1);
+  }
+}
+
+return uniques;
 
 // ==========================================================
   }
