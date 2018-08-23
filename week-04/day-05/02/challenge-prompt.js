@@ -10,9 +10,13 @@
 function factorial(num) {
   // -------------------- Your Code Here --------------------
 
+  var fact = 1;
 
+  for(var i = parseInt(num); i > 0; i--){
+    fact = fact * i;
+  }
 
-  
+  return fact;
   
   // --------------------- End Code Area --------------------
 }

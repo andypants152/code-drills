@@ -10,10 +10,15 @@
 function factor(num) {
   // -------------------- Your Code Here --------------------
 
+  var facts = [];
 
+  for(var i = 1; i <= parseInt(num); i++){
+    if(parseInt(num) % i === 0){
+      facts.push(i);
+    }
+  }
   
-
-  
+  return facts;  
   
   // --------------------- End Code Area --------------------
 }

@@ -10,10 +10,15 @@
 function fibonacci(num) {
   // -------------------- Your Code Here --------------------
 
+  var sequence = [0, 1];
+  
+  while(sequence.length < parseInt(num)){
+    var sum = sequence[sequence.length-1] + sequence[sequence.length -2];
+    
+    sequence.push(sum);
+  }
 
-
-
-
+  return sequence;
 
   // --------------------- End Code Area --------------------
 }

@@ -22,7 +22,30 @@
 function sing(maxBottles) {
   // -------------------- Your Code Here --------------------
 
+  if(maxBottles > 0){
+    for(var i = maxBottles; i > 0; i--){
+      if(i > 1){
+        $("#output-area").append(i + " bottles of beer on the wall, " + i + " bottles of beer<br>");
+      }
+      else{
+        $("#output-area").append(i + " bottle of beer on the wall, " + i + " bottle of beer<br>");
+      }
+      if(i - 1 > 1){
+        $("#output-area").append("take one down pass it around, " + (i -1) + " bottles of beer on the wall<br>");
+      }
+      else if (i - 1 === 1){
+        $("#output-area").append("take one down pass it around, " + (i -1) + " bottle of beer on the wall<br>");
+      }
+      else{
+        $("#output-area").append("take one down pass it around, no more bottles of beer on the wall!");
+      }
+    }
 
+
+  }
+  else{
+    $("#output-area").text("Go get some beer and come back...");
+  }
   
 
 

@@ -11,10 +11,15 @@
 function countCons(str) {
   // -------------------- Your Code Here --------------------
 
+  var count = 0;
+  var cons = ['b', 'c', 'd', 'f', 'g', 'h', 'j', 'k', 'l', 'm', 'n', 'p', 'q', 'r', 's', 't', 'v', 'w', 'x', 'y', 'z'];
+  for(var i = 0; i < str.length; i++){
+    if(cons.indexOf(str[i].toLowerCase()) != -1){
+      count++;
+    }
+  }
 
-
-
-
+  return count;
 
   // --------------------- End Code Area --------------------
 }
