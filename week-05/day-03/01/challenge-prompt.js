@@ -8,9 +8,7 @@ Starter Code :*/
 function addObjectProperty(obj1, key, obj2) {
     // your code here
 
-
-
-
+    return obj1[key] = obj2;
 
     // code ends here
 }
@@ -39,9 +37,9 @@ Starter Code :*/
 function getElementsUpTo(array, n) {
     // your code here
 
+    array.splice(n);
 
-
-
+    return array;
 
     // code ends here
 }
@@ -60,9 +58,9 @@ Starter Code :*/
 function addToEnd(arr, element) {
     // your code here
 
+    arr.push(element);
 
-
-
+    return arr;
 
     // code ends here
 }
@@ -81,7 +79,7 @@ function areaOfARectangle(length, width) {
     // your code here
 
 
-
+    return length * width;
 
 
     

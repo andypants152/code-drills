@@ -6,9 +6,15 @@ Given a number and an object, "removeNumbersLessThan" removes any properties who
 Starter Code :*/
 function removeNumbersLessThan(num, obj) {
   // your code here
+  var keys = Object.keys(obj);
 
+  for(var i = 0; i < keys.length; i++){
+    if(obj[keys[i]] < num){
+      delete obj[keys[i]];
+    }
+  }
   
-
+  return obj;
   
   // code ends here
 }
@@ -26,7 +32,8 @@ console.log("////////////////////////////// QUESTION 4.2 \\\\\\\\\\\\\\\\\\\\\\\
 
 /*Write a function called "elementsGreaterThan10".
 
-Given an object and a key, "elementsGreaterThan10" reads the array located at that key and returns a new array containing only the values from the array in the object that are greater than 10 
+Given an object and a key, "elementsGreaterThan10" reads the array located at that key and returns a new array containing only the values from the array 
+in the object that are greater than 10 
 
 returns an array containing elements that are greater than 10 from the array located at the argument key within the argument object.
 
@@ -40,12 +47,15 @@ Starter Code :*/
 function elementsGreaterThan10(obj, key) {
   // your code here
 
-  
+  var moreThan10 = [];
 
+  for(var i = 0; i < obj[key].length; i++){
+    if(obj[key][i] > 10){
+      moreThan10.push(obj[key][i]);
+    }
+  }
 
-
-
-
+  return moreThan10;
 
   // code ends here
 }

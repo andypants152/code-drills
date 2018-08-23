@@ -11,7 +11,7 @@ Starter Code :
 function computeCompoundInterest(principal, interestRate, compoundingFrequency, timeInYears) {
   // your code here
 
-  
+  return (principal * Math.pow((1 + (interestRate / compoundingFrequency)), (compoundingFrequency * timeInYears))) - principal;
 
 
     // code ends here
@@ -31,7 +31,7 @@ Given an object, "keysCounter" returns how many properties the given object has.
 function keysCounter(obj) {
   // your code here
 
-  
+  return Object.keys(obj).length;
 
 
 
@@ -58,11 +58,14 @@ Starter Code :*/
 function countCharacter(str, char) {
   // your code here
 
-  
+  var count = 0;
+  for(var i = 0; i < str.length; i++){
+    if(str[i] === char){
+      count++;
+    }
+  }
 
-
-
-
+  return count;
 
     // code ends here
 }
