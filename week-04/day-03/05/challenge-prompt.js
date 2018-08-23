@@ -11,15 +11,21 @@ console.log("////////////////////////////// QUESTION 5.1 \\\\\\\\\\\\\\\\\\\\\\\
 function missingNumber(arr){
     // =========== code starts here =============
 
-    
+    arr.sort(function(a, b) {
+      return a - b;
+    })
 
+    console.log(arr);
 
-
-
-
+    for(var i = 0; i < arr.length; i++){
+      if(arr[i] + 1 != arr[i + 1]){
+        return arr[i] + 1;
+      }
+    }
 
     // =========== code ends here ==============
   }
   
-missingNumber([5, 2, 4, 6, 1, 3, 8]);
+console.log(missingNumber([5, 2, 4, 6, 1, 3, 8]));
+
 //expected output = 7 because if we ordered this list, the number seven would be missing

@@ -8,11 +8,15 @@ Given an array of strings, "evenWordLengthOnly" returns an array containing only
 function evenWordLengthOnly(words) {
   // your code here
 
+  var evenWords = [];
   
-
-
-
-
+  for(var i = 0; i < words.length; i++){
+    if(words[i].length % 2 === 0){
+      evenWords.push(words[i]);
+    }
+  }
+  
+  return evenWords;
 
   // code ends here
 }
@@ -23,7 +27,8 @@ console.log("////////////////////////////// QUESTION 4.2 \\\\\\\\\\\\\\\\\\\\\\\
 
 /*Write a function called "countWords".
 
-  Given a string, "countWords" returns an object where each key is a word in that string and the value of the key is how many times that word appears in the string. 
+  Given a string, "countWords" returns an object where each key is a word in that string and the value of the key is how many times that word appears 
+  in the string. 
 
 Notes:
 * If given an empty string, it should return an empty object.
@@ -31,15 +36,19 @@ Notes:
 function countWords(str) {
   // your code here
 
-  
+  var wordsObj = {};
+  var wordsArr = str.split(" ");
 
+  for(var i = 0; i < wordsArr.length; i++){
+    if(wordsObj[wordsArr[i]]){
+      wordsObj[wordsArr[i]] += 1;
+    }
+    else{
+      wordsObj[wordsArr[i]] = 1;
+    }
+  }
 
-
-
-
-
-
-
+  return wordsObj;
 
     // code ends here
 }
