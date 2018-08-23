@@ -12,10 +12,14 @@
 function reverse(str) {
   // -------------------- Your Code Here --------------------
 
+  var words = str.split(" ");
+  var reveresed = "";
+  
+  for(var i = words.length - 1; i >= 0; i--){
+    reveresed += words[i] + " ";
+  }
 
-
-
-
+  return reveresed;
 
   // --------------------- End Code Area --------------------
 }

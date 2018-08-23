@@ -13,10 +13,19 @@
 function findRepeats(arr) {
   // -------------------- Your Code Here --------------------
 
+  var repeats = [];
 
+  for(var i = 0; i < arr.length; i++){
+    if(arr.indexOf(arr[i], i + 1) != -1){
+      if(repeats.indexOf(arr[i]) === -1){
+        repeats.push(arr[i]);
+      }
+    }
+  }
 
+  repeats.sort();
 
-
+  return repeats;
 
   // --------------------- End Code Area --------------------
 }

@@ -8,10 +8,27 @@
 //                Helper Functions (Optional)
 //
 // -------------------- Your Code Here --------------------
+function primeCheck(number) {
+  for (var i = 2; i < number; i++) {
+    if (number % i === 0) {
+      return false;
+    }
+  }
+  return number > 1;
+}
 
+function factor(num) {
+  var facts = [];
 
-
-
+  for(var i = 1; i <= parseInt(num); i++){
+    if(parseInt(num) % i === 0){
+      facts.push(i);
+    }
+  }
+  
+  return facts;  
+  
+}
 
 // --------------------- End Code Area --------------------
 
@@ -23,10 +40,16 @@
 function primeFactors(num) {
   // -------------------- Your Code Here --------------------
 
+  var factors = factor(parseInt(num));
+  var primeFactors = [];
 
+  for(var i = 0; i < factors.length; i++){
+    if(primeCheck(factors[i])){
+      primeFactors.push(factors[i]);
+    }
+  }
 
-
-
+  return primeFactors;
 
   // --------------------- End Code Area --------------------
 }

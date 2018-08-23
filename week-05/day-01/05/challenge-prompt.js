@@ -13,10 +13,20 @@
 function checkTriange(arr) {
   // -------------------- Your Code Here --------------------
 
+  var types = [];
+  if(arr[0] === arr[1] && arr[1] === arr[2]){
+    types.push("Equilateral Triangle");
+  }
 
+  if(arr[0] === arr[1] || arr[0] === arr[2] || arr[1] === arr[2]){
+    types.push("Isoceles Triangle");
+  }
 
+  if(arr[0] != arr[1] && arr[1] != arr[2]){
+    types.push("Scalene Triangle");
+  }
 
-
+  return types;
 
   // --------------------- End Code Area --------------------
 }

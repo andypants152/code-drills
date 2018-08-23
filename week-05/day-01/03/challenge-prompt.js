@@ -13,10 +13,24 @@
 function zipArrays(arr1, arr2) {
   // -------------------- Your Code Here --------------------
 
+  if(arr1.length < arr2.length){
+    var temp = arr1;
+    arr1 = arr2;
+    arr2 = temp;
+  }
 
+  var arrSums = [];
 
+  for(var i = 0; i < arr1.length; i++){
+    if(arr2[i]){
+      arrSums.push(arr1[i] + arr2[i]);
+    }
+    else{
+      arrSums.push(arr1[i]);
+    }
+  }
 
-
+  return arrSums;
 
   // --------------------- End Code Area --------------------
 }
