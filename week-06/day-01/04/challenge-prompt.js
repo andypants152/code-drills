@@ -5,9 +5,17 @@
 function divide (dividend, divisor) {
 // -------------------- Your Code Here --------------------
 
+var count = 0;
 
+while(divisor <= dividend){
+    count++;
+    dividend -= divisor;
+}
+if(dividend){
+    console.log("Remainder: " + dividend);
+}
 
-
+return count;
 
 // --------------------- End Code Area --------------------
 }

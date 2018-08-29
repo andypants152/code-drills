@@ -1,0 +1,8 @@
+pour from 8 to 3: (5, 0 3)
+pour from 3 to 5: (5, 3, 0)
+pour from 8 to 3: (2, 3, 3)
+pour from 3 to 5: (2, 5, 1)
+pour from 5 to 8: (7, 0, 1)
+pour from 3 to 5: (7, 1, 0)
+pour from 8 to 3: (4, 1, 3)
+pour from 3 to 5: (4, 4, 0)
