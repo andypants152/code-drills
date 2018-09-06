@@ -11,16 +11,28 @@ USE emmysDB;
 -- 2. show_name - the name of the show (must be a string, even if it's 90210)
 -- 3. num_seasons - an integer pointing to the number of existing seasons for a show
 -- 4. genre - a string pointing to the genre of the show
--- 5. rating - This is a DECIMAL which can hold two digits after the decimal. (We will be using it to make ratings out of 10. For example: we will be inputting ratings like 7.67)
+-- 5. rating - This is a DECIMAL which can hold two digits after the decimal. (We will be using it to make ratings out of 10. 
+--      For example: we will be inputting ratings like 7.67)
 -- 6. Set nominee_id as the primary key
 
 CREATE TABLE nominees (
-
+    nominee_id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    show_name VARCHAR(100),
+    num_seasons INT,
+    genre VARCHAR(100),
+    rating DECIMAL(2, 2)
 );
 
 
 -- Let the fun begin!! Seed your database with the 5 best TV shows of all time!  
-INSERT INTO nominees (show_name, num_seasons, genre, rating) VALUES 
+INSERT INTO nominees (show_name, num_seasons, genre, rating) VALUES ("The Simpsons", 29, "Cartoon", 8.53);
+INSERT INTO nominees (show_name, num_seasons, genre, rating) VALUES ("Adventure Time", 5, "Cartoon", 10);
+INSERT INTO nominees (show_name, num_seasons, genre, rating) VALUES ("Game of Thrones", 7, "Drama", 9.67);
+INSERT INTO nominees (show_name, num_seasons, genre, rating) VALUES ("Breaking Bad", 5, "Drama", 7.87);
+INSERT INTO nominees (show_name, num_seasons, genre, rating) VALUES ("Stranger Things", 2, "Thriller", 9.43);
+
+
+
 
 -- Paste all of this (feel free to remove the comments) into your work bench and run it. Verify that your table exists with all the shows you seeded into it
 -- Return back to the readme

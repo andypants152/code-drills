@@ -17,23 +17,28 @@ var connection = mysql.createConnection({
     user: "root",
 
     // Your password
-    password: "",
+    password: "password",
     database: "emmysDB"
 });
 
 connection.connect(function (err) {
     if (err) throw err;
+    manageNominees()
 });
 
 //This function will be called multiple times to show us an updated version of our list of nominees
 function review() {
-
-
     //3.  Let's grab a list of all the nominees
     //TO-DO go to this link and read the documentation: https://www.npmjs.com/package/cli-table.
     //Display all of the nominees and their respective data to the command line using CLI Table
     //Once you've done so, invoke the restart function at the end of this function
+    connection.query(
+        "SELECT * FROM songs",
+        function (err, res) {
+            if(err) throw err;
+            
 
+        });
 }
 
 
@@ -59,7 +64,7 @@ function manageNominees() {
 
             //UPDATE    
             case "Change a nominee's rating":
-
+                populateNominees(updateRating);
 
            // 4. Call the populate nominees function here, and pass it upddateRating as an argument. This will give us an array of options to give to the user when they want to choose who to update;
                 break;
@@ -67,7 +72,7 @@ function manageNominees() {
             //DELETE    
             case "Delete a nominee :(":
             //Oooooh, look! ANOTHER callback
-
+                populateNominees(remove);
 
             // 5. Call the populate nominees function here, and pass it remove as an argument. This will give us an array of options to give to the user when they want to choose who to update;
                 break;
@@ -221,6 +226,5 @@ function exit() {
 }
 
 //This is where the magic begins
-manageNominees()
 
 //If you've made it here, you should be done!!!!

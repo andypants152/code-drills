@@ -1,0 +1,19 @@
+DROP DATABASE IF EXISTS stockDB;
+CREATE database stockDB;
+
+USE stockDB;
+
+CREATE TABLE stock (
+-- YOUR CODE HERE --
+
+date VARCHAR(10) NOT NULL,
+open FLOAT NOT NULL,
+high FLOAT NOT NULL,
+low FLOAT NOT NULL,
+close FLOAT NOT NULL,
+volume FLOAT NOT NULL
+
+-- END CODE AREA --
+);
+
+SELECT * FROM stock;
